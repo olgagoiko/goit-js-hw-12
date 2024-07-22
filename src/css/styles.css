@@ -71,9 +71,10 @@ border: none;
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px; /* Відстань між картками */
-  justify-content: center; /* Центрування галереї */
+  gap: 24px; 
+  justify-content: center; 
   margin-top: 32px;
+  margin-bottom: 32px;
   width: 1128px;
   padding-left: 156px;
 }
@@ -91,7 +92,7 @@ border: none;
   border: 1px solid #808080;
 }
 
-/* Стилі для інформації про зображення */
+
 .info {
   border-bottom: 1px solid #808080;
   border-left: 1px solid #808080;
@@ -175,4 +176,18 @@ color: #2e2f42;
   100% {
     transform: rotate(360deg);
   }
+}
+
+#load-more {
+  margin: auto;
+  background: #4e75ff;
+  border-radius: 8px;
+padding: 8px 16px;
+width: 125px;
+height: 40px;
+border: none;
+}
+
+#load-more:hover {
+  background: #6c8cff;
 }
