@@ -27,7 +27,7 @@ export function renderImages(images) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
-  console.log('SimpleLightbox initialized:', new SimpleLightbox('.gallery a'));
+  
 }
 
 export function showLoader() {
