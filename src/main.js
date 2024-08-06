@@ -40,6 +40,7 @@ document
     document.querySelector('.gallery').innerHTML = '';
     document.getElementById('load-more').style.display = 'none';
 
+
     try {
       const { images, total } = await fetchImages(currentQuery, currentPage);
       totalHits = total;
@@ -51,7 +52,7 @@ document
       }
 
       lightbox = new SimpleLightbox('.gallery a'); 
-      lightbox.refresh(); // Оновити галерею
+      lightbox.refresh(); 
 
       iziToast.success({
         title: 'Success',
@@ -90,7 +91,7 @@ document
       smoothScroll();
 
       if (lightbox) {
-        lightbox.refresh(); // Оновити галерею
+        lightbox.refresh(); 
       } else {
         lightbox = new SimpleLightbox('.gallery a');
       }

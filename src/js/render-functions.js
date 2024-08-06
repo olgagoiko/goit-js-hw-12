@@ -1,8 +1,13 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+const gallery = document.querySelector('.gallery');
+const loaderContainer = document.querySelector('.loader-container');
+const spanLoader = document.querySelector('.loader');
+const card = document.querySelector('.gallery .image-card');
+
 export function renderImages(images) {
-  const gallery = document.querySelector('.gallery');
+  // const gallery = document.querySelector('.gallery');
   const markup = images
     .map(
       image => `
@@ -31,19 +36,22 @@ export function renderImages(images) {
 }
 
 export function showLoader() {
-  const loaderContainer = document.querySelector('.loader-container');
+  // const loaderContainer = document.querySelector('.loader-container');
   loaderContainer.style.display = 'block';
-  loaderContainer.innerHTML = `
-    <div class="loader">
-      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-    </div>
-  `;
+  spanLoader.style.display = 'block';
+  // loaderContainer.innerHTML = `
+  //   <div class="loader">
+  //     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  //   </div>
+  // `;
 }
 
 export function hideLoader() {
-  const loaderContainer = document.querySelector('.loader-container');
+  // const loaderContainer = document.querySelector('.loader-container');
   loaderContainer.style.display = 'none';
   loaderContainer.innerHTML = '';
+  spanLoader.style.display = 'none';
+  // spanLoader.innerHTML = '';
 }
 
 export function showEndOfResultsMessage() {
@@ -54,7 +62,7 @@ export function showEndOfResultsMessage() {
 }
 
 export function smoothScroll() {
-  const card = document.querySelector('.gallery .image-card');
+  // const card = document.querySelector('.gallery .image-card');
   if (card) {
     const cardHeight = card.getBoundingClientRect().height;
     window.scrollBy({
@@ -63,4 +71,5 @@ export function smoothScroll() {
     });
   }
 }
+
 
