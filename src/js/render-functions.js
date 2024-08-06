@@ -3,11 +3,10 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const gallery = document.querySelector('.gallery');
 const loaderContainer = document.querySelector('.loader-container');
-const spanLoader = document.querySelector('.loader');
-const card = document.querySelector('.gallery .image-card');
+const loader = document.querySelector('.loader');
+
 
 export function renderImages(images) {
-  // const gallery = document.querySelector('.gallery');
   const markup = images
     .map(
       image => `
@@ -15,16 +14,16 @@ export function renderImages(images) {
       <img src="${image.webformatURL}" alt="${image.tags}" />
       <div class="info">
         <p class="info-item">
-          <b>Likes</b> ${image.likes}
+          <b>Likes:</b> ${image.likes}
         </p>
         <p class="info-item">
-          <b>Views</b> ${image.views}
+          <b>Views:</b> ${image.views}
         </p>
         <p class="info-item">
-          <b>Comments</b> ${image.comments}
+          <b>Comments:</b> ${image.comments}
         </p>
         <p class="info-item">
-          <b>Downloads</b> ${image.downloads}
+          <b>Downloads:</b> ${image.downloads}
         </p>
       </div>
     </a>
@@ -36,23 +35,15 @@ export function renderImages(images) {
 }
 
 export function showLoader() {
-  // const loaderContainer = document.querySelector('.loader-container');
   loaderContainer.style.display = 'block';
-  spanLoader.style.display = 'block';
-  // loaderContainer.innerHTML = `
-  //   <div class="loader">
-  //     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-  //   </div>
-  // `;
+  loader.style.display = 'inline-grid';
 }
 
 export function hideLoader() {
-  // const loaderContainer = document.querySelector('.loader-container');
   loaderContainer.style.display = 'none';
-  loaderContainer.innerHTML = '';
-  spanLoader.style.display = 'none';
-  // spanLoader.innerHTML = '';
-}
+  loader.style.display = '';
+ 
+ }
 
 export function showEndOfResultsMessage() {
   iziToast.info({
@@ -62,11 +53,11 @@ export function showEndOfResultsMessage() {
 }
 
 export function smoothScroll() {
-  // const card = document.querySelector('.gallery .image-card');
+  const card = document.querySelector('.gallery .image-card');
   if (card) {
     const cardHeight = card.getBoundingClientRect().height;
     window.scrollBy({
-      top: cardHeight * 2,
+      top: cardHeight * 6,
       behavior: 'smooth',
     });
   }

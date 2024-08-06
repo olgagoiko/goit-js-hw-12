@@ -11,15 +11,17 @@ import {
   smoothScroll,
 } from './js/render-functions.js';
 
+const gallery = document.querySelector('.gallery');
+const form = document.querySelector('.form');
+const loadMore = document.getElementById('load-more');
+
 let currentPage = 1;
 let currentQuery = '';
 let totalHits = 0;
 let loadedHits = 0;
 let lightbox;
 
-document
-  .querySelector('.form')
-  .addEventListener('submit', async function (event) {
+form.addEventListener('submit', async function (event) {
     event.preventDefault();
     const searchInput = document.querySelector('input[name="delay"]');
     const searchQuery = searchInput.value.trim();
@@ -37,8 +39,9 @@ document
     loadedHits = 0;
 
     showLoader();
-    document.querySelector('.gallery').innerHTML = '';
-    document.getElementById('load-more').style.display = 'none';
+    gallery.innerHTML = '';
+    loadMore.style.display = 'none';
+    
 
 
     try {
@@ -60,7 +63,8 @@ document
       });
 
       if (images.length > 0 && loadedHits < totalHits) {
-        document.getElementById('load-more').style.display = 'block';
+        loadMore.style.display = 'block';
+       
       }
 
       if (loadedHits >= totalHits) {
@@ -78,9 +82,7 @@ document
     searchInput.value = '';
   });
 
-document
-  .getElementById('load-more')
-  .addEventListener('click', async function () {
+  loadMore.addEventListener('click', async function () {
     currentPage += 1;
     showLoader();
 
@@ -97,7 +99,7 @@ document
       }
 
       if (loadedHits >= totalHits) {
-        document.getElementById('load-more').style.display = 'none';
+        loadMore.style.display = 'none';
         showEndOfResultsMessage();
       }
     } catch (error) {
